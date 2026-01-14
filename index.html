@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Merge Game - Transform citations into thesis statements through an engaging merge-style game. Gamify your research and synthesis process.">
+    <title>Merge Game | Research & Synthesis</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Animated Background -->
+        <div class="bg-animation">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+
+        <!-- Header -->
+        <header class="main-header">
+            <div class="logo">
+                <span class="logo-icon">🔬</span>
+                <h1>Merge<span class="accent">Game</span></h1>
+            </div>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-label">Progress</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Merges</span>
+                    <span class="stat-value" id="mergeCount">0</span>
+                </div>
+            </div>
+            <div class="header-buttons">
+                <button class="btn-help" id="helpBtn">
+                    <span>❓</span> How to Play
+                </button>
+                <button class="btn-reset" id="resetBtn">
+                    <span>↺</span> Reset
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-container">
+            <!-- Level Indicators -->
+            <div class="level-ladder">
+                <div class="level-item" data-level="5">
+                    <div class="level-badge">5</div>
+                    <span class="level-name">Thesis Statement</span>
+                    <span class="level-emoji">🏆</span>
+                </div>
+                <div class="level-connector"></div>
+                <div class="level-item" data-level="4">
+                    <div class="level-badge">4</div>
+                    <span class="level-name">Section Headers</span>
+                    <span class="level-emoji">📑</span>
+                </div>
+                <div class="level-connector"></div>
+                <div class="level-item" data-level="3">
+                    <div class="level-badge">3</div>
+                    <span class="level-name">Synthesis Paragraphs</span>
+                    <span class="level-emoji">📝</span>
+                </div>
+                <div class="level-connector"></div>
+                <div class="level-item" data-level="2">
+                    <div class="level-badge">2</div>
+                    <span class="level-name">Synthesis Statements</span>
+                    <span class="level-emoji">💡</span>
+                </div>
+                <div class="level-connector"></div>
+                <div class="level-item active" data-level="1">
+                    <div class="level-badge">1</div>
+                    <span class="level-name">Raw Citations</span>
+                    <span class="level-emoji">📚</span>
+                </div>
+            </div>
+
+            <!-- Game Board -->
+            <div class="game-board" id="gameBoard">
+                <div class="board-header">
+                    <h2>Research Workspace</h2>
+                    <p>Drag matching cards together to merge them into higher-level concepts</p>
+                </div>
+                <div class="cards-container" id="cardsContainer">
+                    <!-- Cards will be dynamically generated -->
+                </div>
+                <div class="merge-zone" id="mergeZone">
+                    <div class="merge-slot" id="slot1" data-slot="1">
+                        <span class="slot-label">Drop Card 1</span>
+                    </div>
+                    <div class="merge-icon">
+                        <span>+</span>
+                    </div>
+                    <div class="merge-slot" id="slot2" data-slot="2">
+                        <span class="slot-label">Drop Card 2</span>
+                    </div>
+                    <button class="merge-btn" id="mergeBtn" disabled>
+                        <span class="merge-btn-icon">⚡</span>
+                        Merge
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result Display -->
+            <div class="result-panel" id="resultPanel">
+                <div class="result-header">
+                    <h3>🎉 Your Final Thesis</h3>
+                </div>
+                <div class="result-content" id="resultContent">
+                    <!-- Final thesis displayed here -->
+                </div>
+                <button class="btn-celebrate" id="celebrateBtn">🎊 Celebrate!</button>
+            </div>
+        </main>
+
+        <!-- Instructions Modal -->
+        <div class="modal-overlay" id="instructionsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🎮 How to Play</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="instruction-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Start with Citations</h4>
+                            <p>You begin with Level 1 cards containing raw research citations and quotes.</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Drag & Merge</h4>
+                            <p>Drag two cards of the <strong>same level</strong> into the merge zone to combine them.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Level Up Your Research</h4>
+                            <p>Each merge creates a higher-level concept: Citations → Synthesis → Paragraphs → Sections
+                                → Thesis!</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Craft Your Thesis</h4>
+                            <p>Your goal is to reach <strong>Level 5</strong> — a complete thesis statement!</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-start" id="startBtn">Let's Begin! 🚀</button>
+            </div>
+        </div>
+
+        <!-- Merge Animation Overlay -->
+        <div class="merge-animation-overlay" id="mergeAnimation">
+            <div class="merge-particles" id="mergeParticles"></div>
+            <div class="merge-result-preview" id="mergeResultPreview"></div>
+        </div>
+
+        <!-- Victory Modal -->
+        <div class="victory-modal" id="victoryModal">
+            <div class="victory-content">
+                <div class="victory-stars">✨🌟⭐🌟✨</div>
+                <h2>🏆 Thesis Complete!</h2>
+                <p>You've successfully synthesized your research into a coherent thesis!</p>
+                <div class="victory-stats">
+                    <div class="victory-stat">
+                        <span class="victory-stat-value" id="finalMerges">0</span>
+                        <span class="victory-stat-label">Total Merges</span>
+                    </div>
+                </div>
+                <button class="btn-play-again" id="playAgainBtn">Play Again 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+
+</html>
