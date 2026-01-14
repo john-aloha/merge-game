@@ -1,0 +1,22 @@
+services:
+  merge-game:
+    image: nginx:alpine
+    container_name: merge-game
+    restart: unless-stopped
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.merge-game.rule=Host(`apps.aloha.university`) && PathPrefix(`/merge-game`)"
+      - "traefik.http.routers.merge-game.entrypoints=websecure"
+      - "traefik.http.routers.merge-game.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.merge-game.middlewares=merge-game-strip"
+      - "traefik.http.middlewares.merge-game-strip.stripprefix.prefixes=/merge-game"
+      - "traefik.http.services.merge-game.loadbalancer.server.port=80"
+
+networks:
+  web:
+    external: true
