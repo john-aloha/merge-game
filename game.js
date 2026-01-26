@@ -331,6 +331,7 @@ function setupEventListeners() {
     document.getElementById('startBtn')?.addEventListener('click', startGame);
     document.getElementById('resetBtn')?.addEventListener('click', resetGame);
     document.getElementById('helpBtn')?.addEventListener('click', showInstructions);
+    document.getElementById('closeInstructionsBtn')?.addEventListener('click', startGame);
     elements.mergeBtn?.addEventListener('click', openWorkshop);
     document.getElementById('playAgainBtn')?.addEventListener('click', resetGame);
     document.getElementById('celebrateBtn')?.addEventListener('click', showVictory);

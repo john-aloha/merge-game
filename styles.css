@@ -1228,6 +1228,8 @@ body {
 
 .instructions-modal {
     max-width: 550px;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 @keyframes modalSlide {
