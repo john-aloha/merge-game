@@ -1206,12 +1206,14 @@ body {
     pointer-events: none;
 }
 
-.custom-citation-modal {
+.custom-citation-modal,
+.workshop-modal {
     opacity: 0;
     pointer-events: none;
 }
 
-.custom-citation-modal.visible {
+.custom-citation-modal.visible,
+.workshop-modal.visible {
     opacity: 1;
     pointer-events: all;
 }
